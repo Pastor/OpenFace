@@ -8,6 +8,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 set(CMAKE_CONFIG_DIR etc/OpenFace)
 set(CONFIG_DIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_CONFIG_DIR}")
 add_definitions(-DCONFIG_DIR="${CONFIG_DIR}")
+add_definitions(-DBOOST_ALL_NO_LIB)
 
 # make sure we'll use OpenBLAS only: there's a header file naming difference between different
 # implementations; so OpenFace wants OpenBLAS;
@@ -27,7 +28,7 @@ else()
     MESSAGE("  OpenBLAS_INCLUDE: ${OpenBLAS_INCLUDE_DIR}")
 endif()
 
-find_package( OpenCV 3.3 REQUIRED COMPONENTS core imgproc calib3d highgui objdetect)
+find_package( OpenCV 3.4 REQUIRED COMPONENTS core imgproc calib3d highgui objdetect)
 if(${OpenCV_FOUND})
 	MESSAGE("OpenCV information:") 
 	MESSAGE("  OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}") 
